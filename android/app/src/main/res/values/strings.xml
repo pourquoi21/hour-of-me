@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">hour-of-me</string>
+    <string name="title_activity_main">hour-of-me</string>
+    <string name="package_name">com.jaylog.hourofme</string>
+    <string name="custom_url_scheme">com.jaylog.hourofme</string>
+</resources>
