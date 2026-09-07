@@ -7,7 +7,7 @@ const SETTINGS_KEY = 'settings';
 
 export function useSettingsStorage() {
     const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
-    const [hasStoredSettings, setHasStoredSettings] =useState(false);
+    const [hasStoredSettings, setHasStoredSettings] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -28,6 +28,7 @@ export function useSettingsStorage() {
 
     const updateSettings = useCallback(async (newSettings: UserSettings) => {
         setSettings(newSettings);
+        setHasStoredSettings(true);
         await Preferences.set({
             key: SETTINGS_KEY,
             value: JSON.stringify(newSettings),
