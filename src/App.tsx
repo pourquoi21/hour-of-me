@@ -4,15 +4,14 @@ import { useSettingsStorage } from "./hooks/useSettingsStorage";
 import { OnboardingView } from './views/OnboardingView';
 
 function App() {
-  const { isLoading, hasStoredSettings } = useSettingsStorage();
-  const [justOnboarded, setJustOnboarded] = useState(false);
+  const { isLoading, hasStoredSettings, updateSettings } = useSettingsStorage();
   
   if (isLoading) {
     return <div>로딩 중...</div>
   }
   
-  if (!hasStoredSettings && !justOnboarded) {
-    return <OnboardingView onComplete={() => setJustOnboarded(true)} />;
+  if (!hasStoredSettings) {
+    return <OnboardingView onSaveSettings={updateSettings} />;
   }
 
   return (

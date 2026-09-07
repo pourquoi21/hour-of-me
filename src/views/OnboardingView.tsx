@@ -1,29 +1,26 @@
 import { useState } from "react";
-import { useSettingsStorage } from "../hooks/useSettingsStorage";
 import { DEFAULT_EMOTION_TAGS, DEFAULT_USER_SETTINGS } from "../constants/defaultData";
 import type { UserSettings } from "../types/record";
 
 type CycleMode = UserSettings['cycleMode'];
 
 interface OnboardingViewProps {
-    onComplete: () => void;
+    onSaveSettings: (settings: UserSettings) => void;
 }
 
-export function OnboardingView({ onComplete }: OnboardingViewProps) {
-    const { updateSettings } = useSettingsStorage();
+export function OnboardingView({ onSaveSettings }: OnboardingViewProps) {
 
     const [ targetHour, setTargetHour ] = useState(DEFAULT_USER_SETTINGS.targetHour);
     const [ cycleMode, setCycleMode ] = useState<CycleMode>('7days');
 
     const handleStart = () => {
-        updateSettings({
+        onSaveSettings({
             targetHour,
             cycleMode,
             startDate: new Date().toISOString().split('T')[0],
             isNotificationEnabled: true,
             palette: DEFAULT_EMOTION_TAGS,
         });
-        onComplete();
     };
 
     return (
