@@ -5,7 +5,11 @@ import type { UserSettings } from "../types/record";
 
 type CycleMode = UserSettings['cycleMode'];
 
-export function OnboardingView() {
+interface OnboardingViewProps {
+    onComplete: () => void;
+}
+
+export function OnboardingView({ onComplete }: OnboardingViewProps) {
     const { updateSettings } = useSettingsStorage();
 
     const [ targetHour, setTargetHour ] = useState(DEFAULT_USER_SETTINGS.targetHour);
@@ -19,6 +23,7 @@ export function OnboardingView() {
             isNotificationEnabled: true,
             palette: DEFAULT_EMOTION_TAGS,
         });
+        onComplete();
     };
 
     return (

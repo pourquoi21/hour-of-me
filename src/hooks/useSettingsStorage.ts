@@ -7,6 +7,7 @@ const SETTINGS_KEY = 'settings';
 
 export function useSettingsStorage() {
     const [settings, setSettings] = useState<UserSettings>(DEFAULT_USER_SETTINGS);
+    const [hasStoredSettings, setHasStoredSettings] =useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -15,6 +16,7 @@ export function useSettingsStorage() {
                 const { value } = await Preferences.get({ key: SETTINGS_KEY });
                 if (value) {
                     setSettings(JSON.parse(value) as UserSettings);
+                    setHasStoredSettings(true);
                 }
             } catch (e) {
                 console.error('설정 불러오기 실패:', e);
@@ -32,5 +34,5 @@ export function useSettingsStorage() {
         });
     }, []);
 
-    return { settings, isLoading, updateSettings };
+    return { settings, isLoading, hasStoredSettings, updateSettings };
 }
