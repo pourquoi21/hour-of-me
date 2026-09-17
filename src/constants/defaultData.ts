@@ -1,4 +1,5 @@
 import type { EmotionTag, UserSettings } from "../types/record";
+import { toDateString } from "../utils/date";
 
 export const DEFAULT_EMOTION_TAGS: EmotionTag[] = [
     { id: 'passion', label: '열정', color: '#FF96BA', isDefault: true},
@@ -24,7 +25,7 @@ export const PRESET_COLOR_PALETTE: string[] = [
 export const DEFAULT_USER_SETTINGS: UserSettings = {
     targetHour: 15,
     cycleMode: '7days',
-    startDate: new Date().toISOString().split('T')[0],
+    startDate: toDateString(new Date()),
     isNotificationEnabled: true,
     palette: DEFAULT_EMOTION_TAGS,
 }

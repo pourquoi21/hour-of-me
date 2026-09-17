@@ -3,6 +3,7 @@ import { useSettingsStorage } from "./hooks/useSettingsStorage";
 import { useRecordStorage } from './hooks/useRecordStorage';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
+import { toDateString } from './utils/date';
 
 function App() {
   const { isLoading, hasStoredSettings, updateSettings, settings } = useSettingsStorage();
@@ -16,7 +17,7 @@ function App() {
     return <OnboardingView onSaveSettings={updateSettings} />;
   }
   
-  const todayStr = new Date().toISOString().split("T")[0];
+  const todayStr = toDateString(new Date());
   const todayRecord = records.find((r) => r.date === todayStr);
 
   return (

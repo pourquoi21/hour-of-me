@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DEFAULT_EMOTION_TAGS, DEFAULT_USER_SETTINGS } from "../constants/defaultData";
+import { toDateString } from "../utils/date";
 import type { UserSettings } from "../types/record";
 
 type CycleMode = UserSettings['cycleMode'];
@@ -17,7 +18,7 @@ export function OnboardingView({ onSaveSettings }: OnboardingViewProps) {
         onSaveSettings({
             targetHour,
             cycleMode,
-            startDate: new Date().toISOString().split('T')[0],
+            startDate: toDateString(new Date()),
             isNotificationEnabled: true,
             palette: DEFAULT_EMOTION_TAGS,
         });

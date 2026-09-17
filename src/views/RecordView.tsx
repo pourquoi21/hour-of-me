@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { RecordItem, EmotionTag } from "../types/record";
 import { DEFAULT_EMOTION_TAGS } from "../constants/defaultData";
+import { toDateString } from "../utils/date";
 
 interface RecordViewProps {
     onSaveRecord: (record: RecordItem) => void;
@@ -12,7 +13,7 @@ export function RecordView({ onSaveRecord, targetHour }: RecordViewProps) {
     const [note, setNote] = useState("");
 
     const handleSave = () => {
-        const today = new Date().toISOString().split('T')[0];
+        const today = toDateString(new Date());
 
         const record: RecordItem = {
             id: `${today}_${targetHour}`,
