@@ -4,6 +4,7 @@ import { useRecordStorage } from './hooks/useRecordStorage';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
 import { toDateString } from './utils/date';
+import { GridView } from './views/GridView';
 
 function App() {
   const { isLoading, hasStoredSettings, updateSettings, settings } = useSettingsStorage();
@@ -23,6 +24,11 @@ function App() {
   return (
     <div>
       메인 화면
+      <GridView
+        startDate={settings.startDate}
+        records={records}
+        cycleMode={settings.cycleMode || '7days'}
+      />
 
       {todayRecord ? (
         <div>
