@@ -45,8 +45,8 @@ export function GridView({
                             key={dateStr}
                             onClick={handleTileClick}
                             style={{
-                                display: "flex",
                                 position: "relative",
+                                display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
                                 padding: "8px 4px",
@@ -73,6 +73,7 @@ export function GridView({
                                     style={{
                                         position: "absolute",
                                         bottom: "calc(100% + 8px)",
+                                        left: "50%",
                                         transform: "translateX(-50%)",
                                         backgroundColor: "#333",
                                         color: "#fff",
@@ -93,7 +94,7 @@ export function GridView({
                                         {matchedRecord.note ? `"${matchedRecord.note}"` : "메모 없음"}
                                     </div>
 
-                                    {/* 말풍선 꼬리표 */}
+                                {/* 말풍선 꼬리표 */}
                                     <div
                                         style={{
                                         position: "absolute",
