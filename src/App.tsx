@@ -32,14 +32,6 @@ function App() {
 
       {todayRecord ? (
         <div>
-          <div
-            style={{
-              width: 48,
-              height: 48,
-              borderRadius: "15%",
-              backgroundColor: todayRecord.color,
-            }}
-            />
             <h3>{todayRecord.emotionLabel}</h3>
             {todayRecord.note && (
               <p
