@@ -14,15 +14,15 @@ export function GridView({
     cycleMode = '7days',
 }: GridViewProps) {
     const [activeTooltipDate, setActiveTooltipDate] = useState<string | null>(null);
-    const totalDays = cycleMode === '30days' ? 30 : 7;
-    const days = getCycleDays(startDate, totalDays);
+    const cycleDays = cycleMode === '30days' ? 30 : 7;
+    const days = getCycleDays(startDate, cycleDays);
 
     return (
         <div style={{ marginTop: 24 }}>
             <h3
                 style={{ marginBottom: 12, fontSize: 16 }}
             >
-                {totalDays}일간의 감정 조각</h3>
+                {cycleDays}일간의 감정 조각</h3>
             <div
             style={{
                 display: "grid",
