@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DEFAULT_EMOTION_TAGS, DEFAULT_USER_SETTINGS } from "../constants/defaultData";
 import { toDateString } from "../utils/date";
+import { SettingsForm } from "../components/SettingsForm";
 import type { UserSettings } from "../types/record";
 
 type CycleMode = UserSettings['cycleMode'];
@@ -26,40 +27,13 @@ export function OnboardingView({ onSaveSettings }: OnboardingViewProps) {
 
     return (
         <div>
-            <h1>하루 중 가장 나다운 N시를 골라주세요</h1>
-            <select
-                name="targetHour"
-                value={targetHour}
-                onChange={(e) => setTargetHour(Number(e.target.value))}
-            >
-                {Array.from({ length: 24 }, (_, i) => (
-                    <option key={i} value={i}>{i}시</option>
-                ))}
-            </select>
-            <fieldset>
-                <legend>기록 주기를 선택해주세요.</legend>
-                <input type="radio"
-                id="7days"
-                name="cycleMode"
-                value="7days"
-                checked={cycleMode === "7days"}
-                onChange={(e) => setCycleMode(e.target.value as CycleMode)}
-                />
-                <label htmlFor="7days">
-                    가볍게 일주일
-                </label>
-                <input type="radio"
-                    id="30days"
-                    name="cycleMode"
-                    value="30days"
-                    checked={cycleMode === "30days"}
-                    onChange={(e) => setCycleMode(e.target.value as CycleMode)}
-                />
-                <label htmlFor="30days">
-                    한달 도전
-                </label>
-            </fieldset>
-            <button onClick={handleStart}>시작하기</button>
+            <SettingsForm 
+                targetHour={targetHour}
+                setTargetHour={setTargetHour}
+                cycleMode={cycleMode}
+                setCycleMode={setCycleMode}
+            />
+            <button onClick={handleStart}>첫 조각 모으러 가기</button>
         </div>
     )
 }
