@@ -4,3 +4,9 @@ export function toDateString(d: Date): string {
     const day = String(d.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
+
+export function getCycleEndDate(startDateStr: string, cycleDays: number): string {
+    const d = new Date(startDateStr);
+    d.setDate(d.getDate() + cycleDays - 1);
+    return toDateString(d);
+}

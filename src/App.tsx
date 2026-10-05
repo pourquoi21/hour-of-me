@@ -3,7 +3,7 @@ import { useSettingsStorage } from "./hooks/useSettingsStorage";
 import { useRecordStorage } from './hooks/useRecordStorage';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
-import { toDateString } from './utils/date';
+import { toDateString, getCycleEndDate } from './utils/date';
 import { GridView } from './views/GridView';
 import { getCycleDays } from './utils/dateGrid';
 import { CycleCompleteView } from './views/CycleCompleteView';
@@ -15,7 +15,7 @@ function App() {
   const todayStr = toDateString(new Date());
   const todayRecord = records.find((r) => r.date === todayStr);
   const cycleDays = settings.cycleMode === '30days' ? 30 : 7;
-  const cycleEndDate = settings.startDate ? getCycleDays(settings.startDate, cycleDays)[cycleDays - 1] : null;
+  const cycleEndDate = settings.startDate ? getCycleEndDate(settings.startDate, cycleDays) : null;
   const isCycleEnded = Boolean(cycleEndDate && cycleEndDate < todayStr);
 
   if (isLoading) {
