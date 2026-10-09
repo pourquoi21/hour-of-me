@@ -8,6 +8,21 @@ interface RecordViewProps {
     targetHour: number;
 }
 
+export function getTimeBasedGreetingMessage(targetHour: number) {
+    const currentHour = new Date().getHours();
+
+    if (currentHour === targetHour) {
+        return `약속한 ${targetHour}시예요. 같이 조각을 모아볼까요?`;
+    }
+
+    if (currentHour < targetHour) {
+        return `오늘 하루도 잘 흘러가고 있나요? ${targetHour}시에 만나요.`;
+    }
+
+    return `바쁜 하루였나요? 지나간 조각이라도 괜찮아요. 같이 모아봐요.`;
+}
+
+
 export function RecordView({ onSaveRecord, targetHour }: RecordViewProps) {
     const [selectedTag, setSelectedTag] = useState<EmotionTag>(DEFAULT_EMOTION_TAGS[0]);
     const [note, setNote] = useState("");
@@ -33,6 +48,7 @@ export function RecordView({ onSaveRecord, targetHour }: RecordViewProps) {
     return (
         <div>
             <h2>오늘의 감정</h2>
+            <p>{getTimeBasedGreetingMessage(targetHour)}</p>
             {DEFAULT_EMOTION_TAGS.map((t) => {
               const isSelected = selectedTag.id === t.id;
               
