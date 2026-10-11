@@ -2,9 +2,10 @@ import type { RecordItem } from "../types/record";
 
 interface EmotionDetailCardProps {
     record? : RecordItem | null;
+    onClose: () => void;
 }
 
-export function EmotionDetailCard({record}: EmotionDetailCardProps) {
+export function EmotionDetailCard({record, onClose}: EmotionDetailCardProps) {
     if (!record) {
     return (
       <div
@@ -23,6 +24,7 @@ export function EmotionDetailCard({record}: EmotionDetailCardProps) {
       </div>
     );
   }
+  
 
   return (
     <div
@@ -35,7 +37,6 @@ export function EmotionDetailCard({record}: EmotionDetailCardProps) {
         border: '1px solid #f0f0f0',
       }}
     >
-
       <div
         style={{
           display: 'flex',
@@ -47,18 +48,35 @@ export function EmotionDetailCard({record}: EmotionDetailCardProps) {
         <span style={{ fontSize: '13px', color: '#888', fontWeight: 500 }}>
           {record.date}
         </span>
-        <span
-          style={{
-            fontSize: '12px',
-            fontWeight: 600,
-            padding: '4px 10px',
-            borderRadius: '20px',
-            backgroundColor: '#f3f4f6',
-            color: '#333',
-          }}
-        >
-          {record.emotionLabel}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span
+            style={{
+              fontSize: '12px',
+              fontWeight: 600,
+              padding: '4px 10px',
+              borderRadius: '20px',
+              backgroundColor: '#f3f4f6',
+              color: '#333',
+            }}
+          >
+            {record.emotionLabel}
+          </span>
+
+          <button
+            onClick={onClose}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '16px',
+              color: '#aaa',
+              padding: '2px 4px',
+              lineHeight: 1,
+            }}
+          >
+            ✕
+          </button>
+        </div>
       </div>
 
       {record.note ? (

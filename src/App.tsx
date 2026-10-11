@@ -22,6 +22,10 @@ function App() {
   const cycleEndDate = settings.startDate ? getCycleEndDate(settings.startDate, cycleDays) : null;
   const isCycleEnded = Boolean(cycleEndDate && cycleEndDate < todayStr);
   
+  function handleClose(): void {
+    setSelectedDate(null);
+  }
+
   function handleSelectDate(dateStr: string): void {
     setSelectedDate((prev) => prev === dateStr ? null : dateStr);
   }
@@ -56,6 +60,7 @@ function App() {
       {selectedDate &&
         <EmotionDetailCard 
           record={selectedRecord}
+          onClose={handleClose}
         />
         }
 
