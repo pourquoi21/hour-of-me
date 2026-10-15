@@ -55,7 +55,7 @@ export function EmotionDetailCard({record, onClose}: EmotionDetailCardProps) {
               fontWeight: 600,
               padding: '4px 10px',
               borderRadius: '20px',
-              backgroundColor: '#f3f4f6',
+              backgroundColor: record.color,
               color: '#333',
             }}
           >
