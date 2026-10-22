@@ -9,6 +9,7 @@ import { GridView } from './views/GridView';
 import { getCycleDays } from './utils/dateGrid';
 import { CycleCompleteView } from './views/CycleCompleteView';
 import { EmotionDetailCard } from './components/EmotionDetailCard';
+import { ArchiveView } from './views/ArchiveView';
 
 function App() {
   const { isLoading, hasStoredSettings, updateSettings, settings } = useSettingsStorage();
@@ -55,7 +56,7 @@ function App() {
         startDate={settings.startDate}
         onSelectDate={handleSelectDate}
         records={records}
-        cycleMode={settings.cycleMode || '7days'}
+        cycleMode={settings.cycleMode}
       />
       {selectedDate &&
         <EmotionDetailCard 
@@ -63,6 +64,11 @@ function App() {
           onClose={handleClose}
         />
         }
+      <ArchiveView
+        records={records}
+        onSelectDate={handleSelectDate}
+        selectedDate={selectedDate}
+      />
 
       {todayRecord ? (
         <div>
