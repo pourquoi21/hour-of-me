@@ -1,19 +1,18 @@
-import { useState } from "react";
-import { getCycleDays } from "../utils/dateGrid";
 import type { RecordItem, UserSettings } from "../types/record";
+import { getCycleDays } from "../utils/dateGrid";
 
 interface GridViewProps {
     startDate: string;
     onSelectDate?: (dateStr: string) => void;
     records: RecordItem[];
-    cycleMode?: UserSettings['cycleMode'];
+    cycleMode: UserSettings['cycleMode'];
 }
 
 export function GridView({
     startDate,
     records,
     onSelectDate,
-    cycleMode = '7days',
+    cycleMode,
 }: GridViewProps) {
     const cycleDays = cycleMode === '30days' ? 30 : 7;
     const days = getCycleDays(startDate, cycleDays);
