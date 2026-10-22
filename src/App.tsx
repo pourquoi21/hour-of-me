@@ -58,17 +58,18 @@ function App() {
         records={records}
         cycleMode={settings.cycleMode}
       />
+      <ArchiveView
+        records={records}
+        onSelectDate={handleSelectDate}
+        selectedDate={selectedDate}
+      />
       {selectedDate &&
         <EmotionDetailCard 
           record={selectedRecord}
           onClose={handleClose}
         />
         }
-      <ArchiveView
-        records={records}
-        onSelectDate={handleSelectDate}
-        selectedDate={selectedDate}
-      />
+      
 
       {todayRecord ? (
         <div>
