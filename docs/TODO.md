@@ -4,10 +4,8 @@
 - [ ] **로컬 알림 (@capacitor/local-notifications)**
   - 설정 저장 시 매일 targetHour에 알림 예약
   - 에뮬레이터/실기기 테스트를 위해 Android Studio 설치 필요
-- [ ] **월 단위 달력 뷰 (과거 기록 아카이브)**
-  - getMonthCells(year, month)로 만든 셀 배열을 7열 그리드에 뿌리기
-  - records의 date 기반으로 그리드에 색상 매칭
-  - 그 이후 이전/다음달 이동 구현
+- [ ] **월 단위 뷰: 이전/다음달 이동**
+  - ArchiveView의 year/month를 버튼으로 증감
 
 ## 추후 개선 과제
 - [ ] **다양한 감정 팔레트 테마 지원**
@@ -18,6 +16,8 @@
 - [ ] **사진/영상 기록 (@capacitor/camera)**
 
 ## 완료
+- [x] **월 단위 달력 뷰 (ArchiveView)**
+  - getMonthCells로 7열 그리드 렌더링, records의 date 매칭으로 감정 색상 표시, 선택 시 상세 카드 연동
 - [x] **월 달력용 날짜 셀 생성 유틸 (getMonthCells)**
   - 1일의 요일만큼 앞을 null로 채워 일~토 열에 맞춤
 - [x] **상세 카드 감정 뱃지에 감정 색상 적용 (record.color 스냅샷 사용)**
