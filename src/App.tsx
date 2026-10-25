@@ -1,15 +1,14 @@
-import './App.css'
 import { useState } from 'react';
-import { useSettingsStorage } from "./hooks/useSettingsStorage";
+import './App.css';
+import { EmotionDetailCard } from './components/EmotionDetailCard';
 import { useRecordStorage } from './hooks/useRecordStorage';
+import { useSettingsStorage } from "./hooks/useSettingsStorage";
+import { getCycleEndDate, toDateString } from './utils/date';
+import { ArchiveView } from './views/ArchiveView';
+import { CycleCompleteView } from './views/CycleCompleteView';
+import { GridView } from './views/GridView';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
-import { toDateString, getCycleEndDate } from './utils/date';
-import { GridView } from './views/GridView';
-import { getCycleDays } from './utils/dateGrid';
-import { CycleCompleteView } from './views/CycleCompleteView';
-import { EmotionDetailCard } from './components/EmotionDetailCard';
-import { ArchiveView } from './views/ArchiveView';
 
 function App() {
   const { isLoading, hasStoredSettings, updateSettings, settings } = useSettingsStorage();

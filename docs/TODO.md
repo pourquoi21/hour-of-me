@@ -3,7 +3,7 @@
 ## 다음 목표
 - [ ] **로컬 알림 (@capacitor/local-notifications)**
   - 설정 저장 시 매일 targetHour에 알림 예약
-  - 에뮬레이터/실기기 테스트를 위해 Android Studio 설치 필요
+  - 알림 예약 수정 및 취소 처리
 - [ ] **월 단위 뷰: 이전/다음달 이동**
   - ArchiveView의 year/month를 버튼으로 증감
 
@@ -16,6 +16,10 @@
 - [ ] **사진/영상 기록 (@capacitor/camera)**
 
 ## 완료
+- [x] **Android 개발 환경 구축, 로컬 알림 테스트**
+  - Android Studio, Android SDK, JDK는 21로 설정(Gradle 버전 8.14.3)
+  - Pixel 10 에뮬레이터에서 앱 빌드 & 실행
+  - @capacitor/local-notifications 이용 1분후 알림 예약 테스트
 - [x] **월 단위 달력 뷰 (ArchiveView)**
   - getMonthCells로 7열 그리드 렌더링, records의 date 매칭으로 감정 색상 표시, 선택 시 상세 카드 연동
 - [x] **월 달력용 날짜 셀 생성 유틸 (getMonthCells)**
