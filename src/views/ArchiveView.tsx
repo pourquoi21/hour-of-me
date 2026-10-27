@@ -1,4 +1,5 @@
-import { getMonthCells } from "../utils/date";
+import { getMonthCells, changeMonth } from "../utils/date";
+import { useState } from "react";
 import type { RecordItem } from "../types/record";
 
 
@@ -15,10 +16,15 @@ export function ArchiveView({
     onSelectDate,
     selectedDate
 }: ArchiveViewProps) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const cells = getMonthCells(year, month);
+    const [viewDate, setViewDate] = useState({
+        year: new Date().getFullYear(),
+        month: new Date().getMonth()
+    });
+    const cells = getMonthCells(viewDate.year, viewDate.month);
+
+    const handleChangeMonth = (offset: number) => {
+        setViewDate(prev => changeMonth(prev.year, prev.month, offset));
+    }
 
     return (
         <>
@@ -76,6 +82,10 @@ export function ArchiveView({
                         </div>
                     )
                 })}
+                <div>
+                    <button onClick={() => handleChangeMonth(-1)}>이전</button>
+                    <button onClick={() => handleChangeMonth(1)}>다음</button>
+                </div>
             </div>
         </>
     );

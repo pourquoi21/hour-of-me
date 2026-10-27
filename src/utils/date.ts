@@ -22,3 +22,12 @@ export function getCycleEndDate(startDateStr: string, cycleDays: number): string
     d.setDate(d.getDate() + cycleDays - 1);
     return toDateString(d);
 }
+
+export function changeMonth(year: number, month: number, offset: number): { year:number; month:number } {
+    const date = new Date(year, month + offset, 1);
+
+    return {
+        year: date.getFullYear(),
+        month: date.getMonth()
+    }
+}
