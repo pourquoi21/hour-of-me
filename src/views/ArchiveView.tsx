@@ -28,7 +28,43 @@ export function ArchiveView({
 
     return (
         <>
-            <div>
+            <div
+                style={{
+                    marginTop: '20px'
+                }}
+            >
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: '20px',
+                    }}
+                >
+                    <button
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => handleChangeMonth(-1)}
+                        aria-label="이전 달"
+                    >
+                        ‹
+                    </button>
+                    {viewDate.year}년 {viewDate.month + 1}월
+                    <button
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
+                        onClick={() => handleChangeMonth(1)}
+                        aria-label="다음 달"
+                    >
+                        ›
+                    </button>
+                </div>
                 <div
                     style={{
                     display: 'grid',
@@ -82,10 +118,6 @@ export function ArchiveView({
                         </div>
                     )
                 })}
-                <div>
-                    <button onClick={() => handleChangeMonth(-1)}>이전</button>
-                    <button onClick={() => handleChangeMonth(1)}>다음</button>
-                </div>
             </div>
         </>
     );
