@@ -7,6 +7,7 @@ interface ArchiveViewProps {
     records: RecordItem[];
     onSelectDate: (dateStr: string) => void;
     selectedDate: string | null;
+    onClearSelection: () => void;
 }
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
@@ -14,7 +15,8 @@ const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 export function ArchiveView({
     records,
     onSelectDate,
-    selectedDate
+    selectedDate,
+    onClearSelection,
 }: ArchiveViewProps) {
     const [viewDate, setViewDate] = useState({
         year: new Date().getFullYear(),
@@ -24,6 +26,15 @@ export function ArchiveView({
 
     const handleChangeMonth = (offset: number) => {
         setViewDate(prev => changeMonth(prev.year, prev.month, offset));
+    }
+
+    const backToCurrentMonth = () => {
+        const now = new Date();
+        setViewDate({
+            year: now.getFullYear(),
+            month: now.getMonth()
+        });
+        onClearSelection();
     }
 
     return (
@@ -119,6 +130,10 @@ export function ArchiveView({
                     )
                 })}
             </div>
+            <button
+                onClick={backToCurrentMonth}
+                aria-label="이번 달"
+            >이번 달로 이동</button>
         </>
     );
 }

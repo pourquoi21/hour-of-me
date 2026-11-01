@@ -61,6 +61,7 @@ function App() {
         records={records}
         onSelectDate={handleSelectDate}
         selectedDate={selectedDate}
+        onClearSelection={handleClose}
       />
       {selectedDate &&
         <EmotionDetailCard 
