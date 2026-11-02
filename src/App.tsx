@@ -9,6 +9,9 @@ import { CycleCompleteView } from './views/CycleCompleteView';
 import { GridView } from './views/GridView';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
+import type { UserSettings } from './types/record';
+import { scheduleDailyNotification } from './utils/notification';
+
 
 function App() {
   const { isLoading, hasStoredSettings, updateSettings, settings } = useSettingsStorage();
@@ -22,6 +25,14 @@ function App() {
   const cycleEndDate = settings.startDate ? getCycleEndDate(settings.startDate, cycleDays) : null;
   const isCycleEnded = Boolean(cycleEndDate && cycleEndDate < todayStr);
   
+  const handleSaveSettings = async (newSettings: UserSettings) => {
+    updateSettings(newSettings);
+
+    if (newSettings.isNotificationEnabled) {
+      await scheduleDailyNotification(newSettings.targetHour);
+    }
+  }
+
   function handleClose(): void {
     setSelectedDate(null);
   }
@@ -35,7 +46,10 @@ function App() {
   }
   
   if (!hasStoredSettings) {
-    return <OnboardingView onSaveSettings={updateSettings} />;
+    return <OnboardingView
+      // onSaveSettings={updateSettings}
+      onSaveSettings={handleSaveSettings}
+      />;
   }
 
   if (isCycleEnded) {
@@ -43,7 +57,8 @@ function App() {
       <CycleCompleteView
         currentSettings={settings}
         records={records}
-        onStartNewCycle={updateSettings}
+        // onStartNewCycle={updateSettings}
+        onStartNewCycle={handleSaveSettings}
       />
     )
   }
@@ -70,7 +85,6 @@ function App() {
         />
         }
       
-
       {todayRecord ? (
         <div>
             <h3>{todayRecord.emotionLabel}</h3>

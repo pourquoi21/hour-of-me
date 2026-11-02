@@ -42,7 +42,6 @@ export function RecordView({ onSaveRecord, targetHour }: RecordViewProps) {
             note,
         }
         onSaveRecord(record);
-        console.log("saved");
     }
 
     return (

@@ -31,3 +31,14 @@ export function changeMonth(year: number, month: number, offset: number): { year
         month: date.getMonth()
     }
 }
+
+export function getNextNotificationTime(targetHour: number) {
+    const date = new Date();
+    const targetDate = new Date(date);
+    targetDate.setHours(targetHour, 0, 0, 0);
+    
+    if (date >= targetDate) {
+        targetDate.setDate(targetDate.getDate() + 1);
+    }
+    return targetDate;
+}

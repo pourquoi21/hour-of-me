@@ -26,6 +26,7 @@ export function ArchiveView({
 
     const handleChangeMonth = (offset: number) => {
         setViewDate(prev => changeMonth(prev.year, prev.month, offset));
+        onClearSelection();
     }
 
     const backToCurrentMonth = () => {
