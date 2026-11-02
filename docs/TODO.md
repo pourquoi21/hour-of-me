@@ -1,11 +1,13 @@
 # 개발 로드맵 & 메모
 
 ## 다음 목표
-- [ ] **로컬 알림 (@capacitor/local-notifications)**
-  - 설정 저장 시 매일 targetHour에 알림 예약
-  - 알림 예약 수정 및 취소 처리
-- [ ] **월 단위 뷰: 이전/다음달 이동**
-  - ArchiveView의 year/month를 버튼으로 증감
+- [ ] **로컬 알림 기능 검증 및 개선 (@capacitor/local-notifications)**
+  - 기존 예약 조회 및 중복 방지 처리 (`getPending`, `cancel`)
+  - 설정 저장 시 알림 예약 실패 처리 (`try/catch`)
+  - 알림 권한 거부 시 동작 확인
+  - 에뮬레이터에서 매일 targetHour 반복 알림 동작 검증
+  - 알림 비활성화 시 기존 예약 취소 처리
+
 
 ## 추후 개선 과제
 - [ ] **다양한 감정 팔레트 테마 지원**
@@ -16,6 +18,11 @@
 - [ ] **사진/영상 기록 (@capacitor/camera)**
 
 ## 완료
+- [x] **로컬 알림 (@capacitor/local-notifications)**
+  - 설정 저장 시 매일 targetHour에 알림 예약
+  - 알림 예약 수정 및 취소 처리
+- [x] **월 단위 뷰: 이전/다음달 이동**
+  - ArchiveView의 year/month를 버튼으로 증감
 - [x] **Android 개발 환경 구축, 로컬 알림 테스트**
   - Android Studio, Android SDK, JDK는 21로 설정(Gradle 버전 8.14.3)
   - Pixel 10 에뮬레이터에서 앱 빌드 & 실행
