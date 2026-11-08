@@ -10,7 +10,7 @@ import { GridView } from './views/GridView';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
 import type { UserSettings } from './types/record';
-import { scheduleDailyNotification } from './utils/notification';
+import { scheduleDailyNotification, getPendingNotifications } from './utils/notification';
 
 
 function App() {
@@ -32,6 +32,14 @@ function App() {
       await scheduleDailyNotification(newSettings.targetHour);
     }
   }
+
+  const handleCheckNotifications = async () => {
+    try {
+        await getPendingNotifications();
+    } catch (error) {
+        console.error('알림 조회 실패:', error);
+    }
+  };
 
   function handleClose(): void {
     setSelectedDate(null);
@@ -110,6 +118,9 @@ function App() {
           onSaveRecord={saveRecord}
           targetHour={settings.targetHour} />
       )}
+      <button onClick={handleCheckNotifications}>
+        예약 알림 확인
+      </button>
     </div>
   );
 }

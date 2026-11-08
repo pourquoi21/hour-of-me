@@ -3,6 +3,8 @@ import { getNextNotificationTime } from './date';
 
 export const scheduleDailyNotification = async (targetHour: number) => {
     const perm = await LocalNotifications.requestPermissions();
+    
+
     if (perm.display !== 'granted') {
         alert('알림 권한이 허용되지 않았어요');
         return;
@@ -20,6 +22,12 @@ export const scheduleDailyNotification = async (targetHour: number) => {
             }
         }
     ]
-})
+    })
+
+}
+
+export const getPendingNotifications = async() => {
+    const pending = await LocalNotifications.getPending();
+    return pending.notifications;
 }
 
