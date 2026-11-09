@@ -10,7 +10,7 @@ import { GridView } from './views/GridView';
 import { OnboardingView } from './views/OnboardingView';
 import { RecordView } from './views/RecordView';
 import type { UserSettings } from './types/record';
-import { scheduleDailyNotification, getPendingNotifications } from './utils/notification';
+import { scheduleDailyNotification, getPendingNotifications, cancelNotification } from './utils/notification';
 
 
 function App() {

@@ -3,7 +3,7 @@
 ## 다음 목표
 - [ ] **로컬 알림 기능 검증 및 개선 (@capacitor/local-notifications)**
   - [x] 기존 예약 목록 조회 (`getPending`)
-  - [ ] 기존 알림 취소 및 중복 예약 방지 (`cancel`)
+  - [x] 기존 알림 취소 및 중복 예약 방지 (`cancel`)
   - [ ] 설정 저장 시 알림 예약 실패 처리 (`try/catch`)
   - [ ] 알림 권한 거부 시 동작 확인
   - [ ] 에뮬레이터에서 매일 targetHour 반복 알림 동작 검증
