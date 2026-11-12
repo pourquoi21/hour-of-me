@@ -29,7 +29,16 @@ function App() {
     updateSettings(newSettings);
 
     if (newSettings.isNotificationEnabled) {
-      await scheduleDailyNotification(newSettings.targetHour);
+      try {
+        
+        const isSuccess = await scheduleDailyNotification(newSettings.targetHour);
+
+        if (!isSuccess) {
+          alert('알림 권한이 허용되지 않았어요.');
+        }
+      } catch (error) {
+        console.error('알림 업데이트 실패:', error);
+      }
     }
   }
 
